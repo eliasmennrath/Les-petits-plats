@@ -1,0 +1,210 @@
+:root{
+    --primary-color: #FFD15B;
+    --txt-black: #1B1B1B;
+    --txt-grey: #7A7A7A;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3   {
+    font-family: 'Anton', 'sans-serif';
+}
+
+ul {
+    padding-left: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+img {
+    display: block;
+}
+
+
+/* Hero */
+header {
+    height: 500px;
+    position: relative;
+}
+#heroImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#heroLogo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    padding-top: 50px;
+    padding-left: 70px;
+}
+
+#heroContent {
+    position: relative;
+    top: 150px;
+}
+
+h1 {
+    font-size: 44px;
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    color: var(--primary-color);
+    width: 65%;
+    margin: auto;
+    text-transform: uppercase;
+}
+
+#heroContent form {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+}
+
+#searchInput {
+    width: 100%;
+    height: 70px;
+    padding-left: 35px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+#searchInput::placeholder {
+    color: var(--txt-grey);
+}
+
+#searchBtn {
+    position: absolute;
+    right: 10px;
+    appearance: none;
+    width: 50px;
+    height: 50px;
+    padding: 12px;
+    background: var(--txt-black);
+    border: none;
+    border-radius: 10px;
+    transition: 300ms ease-out;
+}
+
+.fa-magnifying-glass {
+    color: #fff;
+}
+
+#searchBtn:hover {
+    cursor: pointer;
+    background-color: var(--primary-color);
+}
+
+
+/* Main */
+main {
+    position: relative;
+    top: 60%;
+    background-color: #EDEDED;
+}
+section {
+    width: 90%;
+    max-width: 1440px;
+    margin: auto;
+}
+
+
+.card {
+    position: relative;
+    width: 30%;
+    border-radius: 20px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.cardImg {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+padding: 25px;
+}
+
+.cardTitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--txt-black);
+    margin: 0;
+}
+
+.card h4 {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--txt-grey);
+    letter-spacing: 1.08px;
+    text-transform: uppercase;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+.card p {
+    margin: 0;
+}
+
+.cardRecipe {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--txt-black);
+}
+
+.ingredients ul {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+}
+
+.ingredient {
+    width: 50%;
+    min-width: fit-content;
+}
+
+.ingredientName {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--txt-black);
+}
+
+.ingredientQty {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--txt-grey);
+}
+
+.preparationTime {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    padding: 5px 15px;
+    border-radius: 15px;
+    background-color: var(--primary-color);
+    
+    color: var(--txt-black);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+}

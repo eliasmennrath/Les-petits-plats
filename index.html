@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="icon" type="image/x-icon" href="assets/img/icon.png">
+
+    <title>Les Petits Plats | Accueil</title>
+</head>
+<body>
+    <header>
+        <img src="assets/img/hero.jpg" alt="Une image de présentation du site avec un plat" id="heroImg">
+
+        <div id="heroLogo">
+            <img src="assets/img/logo.png" alt="Le logo du site 'Les petits plats'">
+            <img src="assets/img/icon.png" alt="L'icon du site 'Les petits plats'">
+        </div>
+        <div id="heroContent">
+            <h1 >Cherchez parmi plus de 1500 recettes du qotidien, simple et délicieuses</h1>
+
+            <form>
+                <input type="text" id="searchInput" placeholder="Recherchez une recette, un ingrédient, ...">
+                <button type="submit" id="searchBtn">
+                    <span class="fa-solid fa-magnifying-glass fa-2xl"></span>
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div id="sorting">
+                <div class="dropdown">
+                    <input type="text" name="" id="" class="sorting"><span></span>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>1500 recettes</h2>
+            <div id="recipes">
+
+                <article class="card">
+                    <div class="card-header">
+                        <img src="assets/img/Recettes/Recette01.jpg" alt="Bla bla bla" class="cardImg">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="cardTitle">Limonade de coco</h3>
+                        <div class="recipe">
+                            <h4 class="cardRecipeName">Recette</h4>
+                            <p class="cardRecipe">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eligendi sint recusandae consequatur veritatis quibusdam blanditiis quos voluptate sequi incidunt!</p>
+                        </div>
+                        <div class="ingredients">
+                            <h4 class="cardIngredients">Ingredients</h4>
+                            <ul>
+                                <li class="ingredient">
+                                    <p class="ingredientName">Sucre</p>
+                                    <p class="ingredientQty">300<span class="ingredientUnit"></span></p>
+                                </li>
+                                <li class="ingredient">
+                                    <p class="ingredientName">Sucre</p>
+                                    <p class="ingredientQty">300<span class="ingredientUnit"></span></p>
+                                </li>
+                                <li class="ingredient">
+                                    <p class="ingredientName">Sucre</p>
+                                    <p class="ingredientQty">300<span class="ingredientUnit"></span></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="preparationTime">10min</span>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+<!-- FontAwesome's script -->
+	<script src="https://kit.fontawesome.com/c0b47a3539.js" crossorigin="anonymous"></script>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
