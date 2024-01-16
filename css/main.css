@@ -16,8 +16,8 @@ h1, h2, h3   {
 
 ul {
     padding-left: 0;
-    margin-left: 0;
-    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 ul li {
@@ -128,6 +128,143 @@ section {
 }
 
 
+/* Sorting */
+#sorting {
+    padding-top: 75px;
+}
+#dropdowns {
+    display: flex;
+    column-gap: 60px;
+    position: absolute;
+    z-index: 9;
+    top: 0;
+}
+
+.dropdown {
+    width: 200px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.dropdown:hover {
+    cursor: pointer;
+}
+
+.dropdownTitle {
+    /* width: 100%; */
+    width: -webkit-fill-available;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    transition: .3s;
+}
+.wrapper.active {
+    height: 250px;
+}
+
+.inputContainer {
+    position: relative;
+    padding: 0 15px;
+}
+
+.inputContainer input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 35px;
+    display: block;
+    border: 1px solid #c6c6c6;
+    border-radius: 2px;
+}
+
+.inputContainer .inputOptions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+}
+
+.inputContainer .clearFilter {
+    padding-bottom: 3px;
+    color: var(--txt-grey);
+}
+.inputContainer .clearFilter:hover {
+    cursor: pointer;
+}
+
+.inputContainer .searchFilter {
+    color: var(--txt-grey);
+}
+.inputContainer .searchFilter:hover {
+    cursor: pointer;
+}
+
+
+.wrapper ul {
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.wrapper li {
+    height: 35px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+}
+.wrapper li:hover {
+    cursor: pointer;
+    background-color: var(--primary-color);
+}
+
+
+
+/* Selected filters */
+#selectedFilters ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+#selectedFilters li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 60px;
+    background-color: var(--primary-color);
+    padding: 15px 17px;
+    border-radius: 10px;
+}
+
+#selectedFilters li p {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+#selectedFilters li span:hover {
+    cursor: pointer;
+}
+
+.selected {
+    background-color: var(--primary-color);
+}
+
+/* Recipes */
 .card {
     position: relative;
     width: 30%;
@@ -140,6 +277,13 @@ section {
     height: 250px;
     width: 100%;
     object-fit: cover;
+}
+
+#recipes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 25px;
 }
 
 .card-body {

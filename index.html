@@ -20,7 +20,7 @@
             <img src="assets/img/icon.png" alt="L'icon du site 'Les petits plats'">
         </div>
         <div id="heroContent">
-            <h1 >Cherchez parmi plus de 1500 recettes du qotidien, simple et délicieuses</h1>
+            <h1 >Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</h1>
 
             <form>
                 <input type="text" id="searchInput" placeholder="Recherchez une recette, un ingrédient, ...">
@@ -34,27 +34,92 @@
     <main>
         <section>
             <div id="sorting">
-                <div class="dropdown">
-                    <input type="text" name="" id="" class="sorting"><span></span>
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                <div id="dropdowns">
+                    <div class="dropdown">
+                        <div class="dropdownTitle" id="dropdownIngredients">
+                            <span>Ingredients</span>
+                            <span class="fa-solid fa-chevron-down"></span>
+                        </div>
+
+                        <div class="wrapper" id="ingredientsWrapper">
+                            <div class="inputContainer">
+                                <input type="text" name="" class="sorting" id="ingredientsInput">
+                                <div class="inputOptions">
+                                    <span class="clearFilter" id="ingredientsClear">x</span>
+                                    <span class="fa-solid fa-magnifying-glass fa-xs searchFilter" id="ingredientsBtn"></span>
+                                </div>
+                            </div>
+                            <ul id="ingredientsList">
+                                <li>Jus</li>
+                                <li>Citron</li>
+                                <li>Coco</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <div class="dropdownTitle" id="dropdownAppliances">
+                            <span>Appareils</span>
+                            <span class="fa-solid fa-chevron-down"></span>
+                        </div>
+
+                        <div class="wrapper" id="appliancesWrapper">
+                            <div class="inputContainer">
+                                <input type="text" name="" class="sorting" id="appliancesInput">
+                                <div class="inputOptions">
+                                    <span class="clearFilter" id="appliancesClear">x</span>
+                                    <span class="fa-solid fa-magnifying-glass fa-xs searchFilter" id="appliancesBtn"></span>
+                                </div>
+                            </div>
+                            <ul id="appliancesList">
+                                <li>Jus</li>
+                                <li>Citron</li>
+                                <li>Coco</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <div class="dropdownTitle" id="dropdownUstensils">
+                            <span>Ustensiles</span>
+                            <span class="fa-solid fa-chevron-down"></span>
+                        </div>
+
+                        <div class="wrapper" id="ustensilsWrapper">
+                            <div class="inputContainer">
+                                <input type="text" name="" class="sorting" id="ustensilsInput">
+                                <div class="inputOptions">
+                                    <span class="clearFilter" id="ustensilsClear">x</span>
+                                    <span class="fa-solid fa-magnifying-glass fa-xs searchFilter" id="ustensilsBtn"></span>
+                                </div>
+                            </div>
+                            <ul id="ustensilsList">
+                                <li>Jus</li>
+                                <li>Citron</li>
+                                <li>Coco</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="selectedFilters">
+                    <ul id="selectedList">
                     </ul>
                 </div>
+
             </div>
 
-            <h2>1500 recettes</h2>
+            <h2 id="totalRecipes"></h2>
             <div id="recipes">
 
-                <article class="card">
+                <!-- <article class="card">
                     <div class="card-header">
                         <img src="assets/img/Recettes/Recette01.jpg" alt="Bla bla bla" class="cardImg">
                     </div>
                     <div class="card-body">
                         <h3 class="cardTitle">Limonade de coco</h3>
                         <div class="recipe">
-                            <h4 class="cardRecipeName">Recette</h4>
+                            <h4 class="cardrecipeTitle">Recette</h4>
                             <p class="cardRecipe">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eligendi sint recusandae consequatur veritatis quibusdam blanditiis quos voluptate sequi incidunt!</p>
                         </div>
                         <div class="ingredients">
@@ -76,7 +141,7 @@
                         </div>
                     </div>
                     <span class="preparationTime">10min</span>
-                </article>
+                </article> -->
 
             </div>
         </section>
@@ -86,6 +151,16 @@
 <!-- FontAwesome's script -->
 	<script src="https://kit.fontawesome.com/c0b47a3539.js" crossorigin="anonymous"></script>
 
-    <script src="js/index.js"></script>
+<!-- Templates -->
+    <script src="js/templates/cards.js"></script>
+
+<!-- Class -->
+    <script src="js/Class/Recipe.js"></script>
+    <script src="js/Class/Filter.js"></script>
+    <script src="js/Class/Ingredient.js"></script>
+    <script src="js/Class/Appliance.js"></script>
+    <script src="js/Class/Ustensil.js"></script>
+
+    <script src="js/pages/index.js"></script>
 </body>
 </html>
