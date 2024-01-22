@@ -162,7 +162,7 @@ class Recipe {
 
         let time = document.createElement('span');
         time.className = "preparationTime";
-        time.textContent = this.time;
+        time.textContent = this.time + ' min';
 
 
         ingredientsDiv.appendChild(ingredientsTitle);
@@ -177,6 +177,7 @@ class Recipe {
         
         cardHeader.appendChild(img);
 
+        article.appendChild(time);
         article.appendChild(cardHeader);
         article.appendChild(cardBody);
 
