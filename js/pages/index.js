@@ -1,3 +1,5 @@
+Set.prototype.get = function(index) { return [...this][index]; }
+
 const url = 'datas/recipes.json';
 
 let recipes;
@@ -30,16 +32,17 @@ then(response => {
     recipes = data.recipes;
     resultRecipes = recipes;
 
-    recipes.forEach((recipe, index) => {
-        recipe = new Recipe(recipe);
+    for (let index = 0; index < recipes.length; index++) {
+        let recipe = new Recipe(recipes[index]);
 
         let card = recipe.build();
         recipeContainer.appendChild(card);
 
         recipes[index] = recipe;
 
-        updateFilters(recipe);
-    });
+        updateFilters(recipe);        
+    }
+
 
     filters();
 
@@ -67,30 +70,31 @@ then(response => {
             appliancesList.innerHTML = "";
             ustensilsList.innerHTML = "";
 
-            recipes.forEach(recipe => {
-                if (recipe.containsInName(input.value) || recipe.containsInDescription(input.value) || recipe.containsInIngredient(input.value)) {
-                    resultRecipes.push(recipe);
+            for (let index = 0; index < recipes.length; index++) {
+                if(recipes[index].containsInName(input.value) || recipes[index].containsInDescription(input.value) || recipes[index].containsInIngredient(input.value)) {
+                    resultRecipes.push(recipes[index]);
                 }
-            });
+            }
 
-            resultRecipes.forEach(recipe => {
-                if(recipe.containsAllIngredients(selectedIngredients) && recipe.containsAllAppliances(selectedAppliances) && recipe.containsAllUstensils(selectedUstensils)) {
-                    sortedRecipes.add(recipe);
+            for (let index = 0; index < resultRecipes.length; index++) {
+                if(resultRecipes[index].containsAllIngredients(selectedIngredients) && resultRecipes[index].containsAllAppliances(selectedAppliances) && resultRecipes[index].containsAllUstensils(selectedUstensils)) {
+                    sortedRecipes.add(resultRecipes[index]);
                 }
-            });
-
+            }
 
             ingredients = new Set();
             appliances = new Set();
             ustensils = new Set();
-            sortedRecipes.forEach(recipe => { 
-                updateFilters(recipe);
 
-                let card = recipe.build();
+            for (let index = 0; index < sortedRecipes.size; index++) {
+                
+                updateFilters(sortedRecipes.get(index));
+
+                let card = sortedRecipes.get(index).build();
                 recipeContainer.appendChild(card);
 
                 counter++;
-            });
+            }
 
             filters();
 
@@ -165,57 +169,63 @@ function toFilterObjectArray(set, type) {
 
 function buildList(filterArray, htmlList, selectedTags) {
     htmlList.innerHTML = "";
-    filterArray.forEach(filter => {
-        let listItem = filter.build(selectFilter, removeFilter, selectedTags);
+
+
+    for (let index = 0; index < filterArray.length; index++) {
+        let listItem = filterArray[index].build(selectFilter, removeFilter, selectedTags);
         htmlList.appendChild(listItem);
-    });
+    }
 }
 
 function updateFilters(recipe) {
-    recipe.ingredients.forEach(ingredient => {
-        ingredients.add(ingredient.ingredient.toLowerCase());
-    });
+
+    for (let index = 0; index < recipe.ingredients.length; index++) {
+        ingredients.add(recipe.ingredients[index].ingredient.toLowerCase());
+    }
 
     appliances.add(recipe.appliance.toLowerCase());
 
-    recipe.ustensils.forEach(ustensil => {
-        ustensils.add(ustensil.toLowerCase());
-    });
+    for (let index = 0; index < recipe.ustensils.length; index++) {
+        ustensils.add(recipe.ustensils[index].toLowerCase());
+    }
 }
 
 function searchIngredient(ingredients, filterValue) {
     if(filterValue.length == 0 || filterValue.length >= 3) {
         ingredientsList.innerHTML = '';
-        ingredients.forEach(element => {
-            if (element.containsInName(filterValue)) {
-                let listItem = element.build(selectFilter, removeFilter, selectedIngredients);
+
+        for (let index = 0; index < ingredients.length; index++) {
+            if (ingredients[index].containsInName(filterValue)) {
+                let listItem = ingredients[index].build(selectFilter, removeFilter, selectedIngredients);
                 ingredientsList.appendChild(listItem);
             }
-        });
+        }
     }
 }
 
 function searchAppliance(appliances, filterValue) {
     if(filterValue.length == 0 || filterValue.length >= 3) {
         appliancesList.innerHTML = '';
-        appliances.forEach(element => {
-            if (element.containsInName(filterValue)) {
-                let listItem = element.build(selectFilter, removeFilter, selectedAppliances);
+
+        for (let index = 0; index < appliances.length; index++) {
+            if (appliances[index].containsInName(filterValue)) {
+                let listItem = appliances[index].build(selectFilter, removeFilter, selectedAppliances);
                 appliancesList.appendChild(listItem);
             }
-        });
+        }
     }
 }
 
 function searchUstensil(ustensils, filterValue) {
     if(filterValue.length == 0 || filterValue.length >= 3) {
         ustensilsList.innerHTML = '';
-        ustensils.forEach(element => {
-            if (element.containsInName(filterValue)) {
-                let listItem = element.build(selectFilter, removeFilter, selectedUstensils);
+
+        for (let index = 0; index < ustensils.length; index++) {
+            if (ustensils[index].containsInName(filterValue)) {
+                let listItem = ustensils[index].build(selectFilter, removeFilter, selectedUstensils);
                 ustensilsList.appendChild(listItem);
             }
-        });
+        }
     }
 }
 
@@ -277,24 +287,27 @@ function removeFilter(filter) {
 
 function filteredResult() {
     sortedRecipes = new Set();
-    resultRecipes.forEach(recipe => {
-        if(recipe.containsAllIngredients(selectedIngredients) && recipe.containsAllAppliances(selectedAppliances) && recipe.containsAllUstensils(selectedUstensils)) {
-            sortedRecipes.add(recipe);
+
+    for (let index = 0; index < resultRecipes.length; index++) {
+        if(resultRecipes[index].containsAllIngredients(selectedIngredients) && resultRecipes[index].containsAllAppliances(selectedAppliances) && resultRecipes[index].containsAllUstensils(selectedUstensils)) {
+            sortedRecipes.add(resultRecipes[index]);
         }
-    });
+    }
 
     recipeContainer.innerHTML = '';
-    sortedRecipes.forEach(recipe => {
-        let card = recipe.build();
+
+    for (let index = 0; index < sortedRecipes.size; index++) {
+        let card = sortedRecipes.get(index).build();
         recipeContainer.appendChild(card);
-    });
+    }
 
     ingredients = new Set();
     appliances = new Set();
     ustensils = new Set();
-    sortedRecipes.forEach(recipe => { 
-        updateFilters(recipe);
-    });
+
+    for (let index = 0; index < sortedRecipes.size; index++) {
+        updateFilters(sortedRecipes.get(index));
+    }
 
     filters();
 

@@ -1,5 +1,4 @@
 class Recipe {
-    // constructor(id, image, name,  servings, ingredients, time, description, appliance, ustensils) {
     constructor(recipe) {
         this.id = recipe.id;
         this.image = recipe.image;
@@ -29,11 +28,12 @@ class Recipe {
 
     containsInIngredient(value) {
         let contains = false;
-        this.ingredients.forEach(ingredient => {
-            if(ingredient.ingredient.toLowerCase().includes(value.toLowerCase().trim())) {
+
+        for (let index = 0; index < this.ingredients.length; index++) {
+            if(this.ingredients[index].ingredient.toLowerCase().includes(value.toLowerCase().trim())) {
                 contains = true;
             }
-        });
+        }
         return contains;
     }
 
@@ -41,19 +41,21 @@ class Recipe {
         if(selectedIngredients.size == 0) {
             return true;
         }
-        let counter = 0;
-        selectedIngredients.forEach(selectedIngredient => {
-            this.ingredients.forEach(ingredient => {
-                if(ingredient.ingredient.toLowerCase() == selectedIngredient) {
-                    counter++;
-                }
-            });
-        });
 
-        if(counter == selectedIngredients.size) {
-            return true;
+        for (let index = 0; index < selectedIngredients.size; index++) {
+            let contains = false;
+            for (let i = 0; i < this.ingredients.length; i++) {
+                if(this.ingredients[i].ingredient.toLowerCase() == selectedIngredients.get(index)) {
+                    contains = true;
+                    break;
+                }
+            }
+            if(!contains) {
+                return false;
+            }
         }
-        return false;
+
+        return true;
     }
 
     containsAllAppliances(selectedAppliances) {
@@ -64,11 +66,12 @@ class Recipe {
             return false
         }
         let contains = false;
-        selectedAppliances.forEach(selectedAppliance => {
-            if(this.appliance.toLowerCase() == selectedAppliance) {
+
+        for (let index = 0; index < selectedAppliances.size; index++) {
+            if(this.appliance.toLowerCase() == selectedAppliances.get(index)) {
                 contains = true;
             }
-        });
+        }
         return contains;
     }
 
@@ -76,19 +79,21 @@ class Recipe {
         if(selectedUstensils.size == 0) {
             return true;
         }
-        let counter = 0;
-        selectedUstensils.forEach(selectedUstensil => {
-            this.ustensils.forEach(ustensil => {
-                if(ustensil.toLowerCase() == selectedUstensil) {
-                    counter++;
-                }
-            });
-        });
 
-        if(counter == selectedUstensils.size) {
-            return true;
+        for (let index = 0; index < selectedUstensils.size; index++) {
+            let contains = false;
+            for(let i = 0; i < this.ustensils.length; i++) {
+                if(this.ustensils[i].toLowerCase() == selectedUstensils.get(index)) {
+                    contains = true;
+                    break;
+                }
+            }
+            if(!contains) {
+                return false;
+            }
         }
-        return false;
+
+        return true;
     }
 
     build() {

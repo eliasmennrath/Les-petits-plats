@@ -16,7 +16,6 @@ class Appliance extends Filter {
         }
 
         li.addEventListener('click', () => {
-            // selectApplianceFilter(this.name)
             li.classList.toggle('selected');
 
             if(li.classList.contains('selected')) {
@@ -25,7 +24,6 @@ class Appliance extends Filter {
                 removeCallback(this);
             }
 
-            // selectFilter(this);
         });
         return li;
     }

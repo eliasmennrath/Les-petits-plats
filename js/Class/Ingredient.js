@@ -5,28 +5,12 @@ class Ingredient extends Filter {
     }
 
     recipeContains(recipes, ingredient) {
-    //     recipes.forEach(recipe => {
-    //         selectedIngredients.forEach(selectedIngredient => {
-    //             // Init boolean to false
-    //             let containsIng = false;
-    //             recipe.ingredients.forEach(ingredient => {
-    //                 if(ingredient.ingredient.toLowerCase() == selectedIngredient.toLowerCase()) {
-    //                     containsIng = true;
-    //                     return;
-    //                 }
-    //             })
-    //             if(containsIng) {
-    //                 sortedRecipesIng.add(recipe);
-    //             }
-    //         });
-    //     });
-
         for (let index = 0; index < recipes.length; index++) {
             for (let i = 0; i < selectedIngredients.length; index++) {
                 let containsIng = false;
 
                 for (let j = 0; j < recipes[index].ingredients.length; j++) {
-                    if (recipes[index].ingredients[j].ingredient.toLowerCase() == selectedIngredients[i].toLowerCase()) {
+                    if (recipes[index].ingredients[j].ingredient.toLowerCase() == selectedIngredients.get(i).toLowerCase()) {
                         containsIng = true;
                         break;
                     }
@@ -51,7 +35,6 @@ class Ingredient extends Filter {
         }
 
         li.addEventListener('click', () => {
-            // selectIngredientFilter(this.name)
             li.classList.toggle('selected');
 
             if(li.classList.contains('selected')) {
@@ -60,7 +43,6 @@ class Ingredient extends Filter {
                 removeCallback(this);
             }
 
-            // callbackClick(this);
         });
         return li;
     }

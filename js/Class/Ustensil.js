@@ -18,14 +18,10 @@ class Ustensil extends Filter {
         li.addEventListener('click', () => {
 
             if(!li.classList.contains('selected')) {
-                console.log('not selected');
                 selectCallback(this);
             } else {
-                console.log('selected');
                 removeCallback(this);
             }
-
-            // selectFilter(this);
 
         });
         return li;
