@@ -27,14 +27,12 @@ class Recipe {
     }
 
     containsInIngredient(value) {
-        let contains = false;
-
         for (let index = 0; index < this.ingredients.length; index++) {
             if(this.ingredients[index].ingredient.toLowerCase().includes(value.toLowerCase().trim())) {
-                contains = true;
+                return true;
             }
         }
-        return contains;
+        return false;
     }
 
     containsAllIngredients(selectedIngredients) {

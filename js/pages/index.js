@@ -14,10 +14,6 @@ let selectedIngredients = new Set();
 let selectedAppliances = new Set();
 let selectedUstensils = new Set();
 
-let sortedRecipesIng = new Set();
-let sortedRecipesApp = new Set();
-let sortedRecipesUst = new Set();
-
 const recipeContainer = document.getElementById('recipes');
 const ingredientsList = document.getElementById('ingredientsList');
 const appliancesList = document.getElementById('appliancesList');
@@ -31,6 +27,7 @@ then(response => {
     // Récupération des données
     recipes = data.recipes;
     resultRecipes = recipes;
+    
 
     for (let index = 0; index < recipes.length; index++) {
         let recipe = new Recipe(recipes[index]);
@@ -50,6 +47,10 @@ then(response => {
     let total = document.getElementById('totalRecipes');
     total.textContent = recipes.length + ' recettes';
 
+    if (resultRecipes.length == 0) {
+        recipeContainer.innerText = "Aucune recette ne correspond à votre critère... ";
+    }
+
 
     // Fonctionnalité de recherche
     const input = document.getElementById('searchInput');
@@ -61,9 +62,6 @@ then(response => {
             let counter = 0;
             resultRecipes = [];
             sortedRecipes = new Set();
-            sortedRecipesIng = new Set();
-            sortedRecipesApp = new Set();
-            sortedRecipesUst = new Set();
 
             recipeContainer.innerHTML = '';
             ingredientsList.innerHTML = "";
@@ -99,6 +97,10 @@ then(response => {
             filters();
 
             total.textContent = counter + ' recettes';
+
+            if (resultRecipes.length == 0) {
+                recipeContainer.innerText = "Aucune recette ne correspond à votre critère... ";
+            }
         }
     });
 
@@ -157,13 +159,31 @@ document.getElementById('dropdownUstensils').addEventListener('click', () => {
  */
 
 function toFilterObjectArray(set, type) {
+    // Accolades pour éviter erreur linter
     switch (type) {
-        case 'ingredients':
-            return [...set].map((element) => new Ingredient(element));
-        case 'appliances':
-            return [...set].map((element) => new Appliance(element));
-        case 'ustensils':
-            return [...set].map((element) => new Ustensil(element));
+        case 'ingredients': {
+            let ingredients = [];
+            for(let i = 0; i < set.size; i++) {
+                ingredients.push(new Ingredient(set.get(i)));
+            }
+            return ingredients;
+        }
+
+        case 'appliances': {
+            let appliances = [];
+            for(let i = 0; i < set.size; i++) {
+                appliances.push(new Appliance(set.get(i)));
+            }
+            return appliances;
+        }
+
+        case 'ustensils': {
+            let ustensils = [];
+            for(let i = 0; i < set.size; i++) {
+                ustensils.push(new Ustensil(set.get(i)));
+            }
+            return ustensils;
+        }
     }
 }
 
@@ -229,24 +249,6 @@ function searchUstensil(ustensils, filterValue) {
     }
 }
 
-function selectIngredientFilter(ingredient) {
-    let sortedRecipesIng = new Set();
-    selectedIngredients.add(ingredient);
-}
-
-function selectApplianceFilter(appliance) {
-    let sortedRecipesApp = new Set();
-    selectedAppliances.add(appliance);
-
-    return selectedAppliances;
-}
-
-function selectUstensilFilter(ustensil) {
-    let sortedRecipesUst = new Set();
-    selectedUstensils.add(ustensil);
-
-    return selectedUstensils;
-}
 
 function selectFilter(filter) {
     switch (filter.constructor.name) {
@@ -312,6 +314,10 @@ function filteredResult() {
     filters();
 
     document.getElementById('totalRecipes').textContent = sortedRecipes.size + ' recettes';
+
+    if (resultRecipes.length == 0) {
+        recipeContainer.innerText = "Aucune recette ne correspond à votre critère... ";
+    }
 }
 
 function filters() {
