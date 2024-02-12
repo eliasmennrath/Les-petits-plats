@@ -118,13 +118,16 @@ h1 {
 /* Main */
 main {
     position: relative;
+    min-height: 60vh;
     top: 60%;
     background-color: #EDEDED;
+    padding-bottom: 30px;
 }
 section {
     width: 90%;
     max-width: 1440px;
     margin: auto;
+    position: relative;
 }
 
 
@@ -137,7 +140,7 @@ section {
     column-gap: 60px;
     position: absolute;
     z-index: 9;
-    top: 0;
+    top: 20px;
 }
 
 .dropdown {
@@ -217,7 +220,7 @@ section {
 
 
 .wrapper ul {
-    max-height: 200px;
+    max-height: 215px;
     overflow-x: hidden;
 }
 
@@ -232,9 +235,18 @@ section {
     background-color: var(--primary-color);
 }
 
+#totalRecipes {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 
 
 /* Selected filters */
+#selectedFilters {
+    padding-top: 15px;
+}
+
 #selectedFilters ul{
     display: flex;
     flex-wrap: wrap;
@@ -267,7 +279,7 @@ section {
 /* Recipes */
 .card {
     position: relative;
-    width: 30%;
+    width: 380px;
     border-radius: 20px;
     background-color: #fff;
     overflow: hidden;
@@ -282,8 +294,9 @@ section {
 #recipes {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    row-gap: 25px;
+    column-gap: calc((100% - 3 * 380px) / 2);
+    row-gap: 40px;
+    margin-top: 25px;
 }
 
 .card-body {
