@@ -13,8 +13,6 @@ let selectedAppliances = new Set();
 let selectedUstensils = new Set();
 
 let sortedRecipesIng = new Set();
-let sortedRecipesApp = new Set();
-let sortedRecipesUst = new Set();
 
 const recipeContainer = document.getElementById('recipes');
 const ingredientsList = document.getElementById('ingredientsList');
@@ -59,8 +57,6 @@ then(response => {
             resultRecipes = [];
             sortedRecipes = new Set();
             sortedRecipesIng = new Set();
-            sortedRecipesApp = new Set();
-            sortedRecipesUst = new Set();
 
             recipeContainer.innerHTML = '';
             ingredientsList.innerHTML = "";
@@ -217,25 +213,6 @@ function searchUstensil(ustensils, filterValue) {
             }
         });
     }
-}
-
-function selectIngredientFilter(ingredient) {
-    let sortedRecipesIng = new Set();
-    selectedIngredients.add(ingredient);
-}
-
-function selectApplianceFilter(appliance) {
-    let sortedRecipesApp = new Set();
-    selectedAppliances.add(appliance);
-
-    return selectedAppliances;
-}
-
-function selectUstensilFilter(ustensil) {
-    let sortedRecipesUst = new Set();
-    selectedUstensils.add(ustensil);
-
-    return selectedUstensils;
 }
 
 function selectFilter(filter) {

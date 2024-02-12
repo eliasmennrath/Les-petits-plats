@@ -4,7 +4,7 @@ class Ingredient extends Filter {
         this.className = 'ingredientFilter'
     }
 
-    recipeContains(recipes, ingredient) {
+    recipeContains(recipes) {
         recipes.forEach(recipe => {
             selectedIngredients.forEach(selectedIngredient => {
                 // Init boolean to false
